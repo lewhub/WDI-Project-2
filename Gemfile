@@ -45,5 +45,8 @@ group :development do
   gem 'spring'
 end
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+end
+
 ruby "2.2.1"

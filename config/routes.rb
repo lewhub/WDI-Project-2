@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'workers#index'
+  root 'chores#index'
   resources :order
 
   resources :sessions, only: [:new, :create]
