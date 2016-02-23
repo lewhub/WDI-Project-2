@@ -11,19 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222170139) do
+ActiveRecord::Schema.define(version: 20160223204729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "chores", force: :cascade do |t|
-    t.string   "type"
     t.string   "price"
     t.integer  "worker_count"
     t.string   "chore_title"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "chore_type"
+    t.integer  "order_id"
   end
+
+  add_index "chores", ["order_id"], name: "index_chores_on_order_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
     t.string   "history"
@@ -34,6 +37,14 @@ ActiveRecord::Schema.define(version: 20160222170139) do
     t.string   "my_chores"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "order_id"
+  end
+
+  add_index "customers", ["order_id"], name: "index_customers_on_order_id", using: :btree
+
+  create_table "customers_orders", id: false, force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "order_id",    null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -52,6 +63,12 @@ ActiveRecord::Schema.define(version: 20160222170139) do
     t.string   "availability"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "order_id"
   end
 
+  add_index "workers", ["order_id"], name: "index_workers_on_order_id", using: :btree
+
+  add_foreign_key "chores", "orders"
+  add_foreign_key "customers", "orders"
+  add_foreign_key "workers", "orders"
 end

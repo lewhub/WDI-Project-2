@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'chores#index'
   resources :order
+  
 
   resources :sessions, only: [:new, :create]
 
