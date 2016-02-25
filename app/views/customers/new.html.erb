@@ -1,2 +1,20 @@
-<h1>Customers#new</h1>
-<p>Find me in app/views/customers/new.html.erb</p>
+<h1 style='text-align:center;'>Create A New Customer Account</h1>
+<div style='text-align: center'>
+<%= form_for @customer do |f| %>
+  <%= f.label :name, 'Enter Your Name' %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :password, "Create a password" %>
+  <%= f.password_field :password %>
+  <br>
+  <%= f.label :password_confirmation, 'Confirm Password' %>
+  <%= f.password_field :password_confirmation %>
+  <br>
+  <%= f.label :credit_card_info, 'Enter Credit Card Number' %>
+  <%= f.text_field :credit_card_info %>
+  <br>
+  <%= f.submit %>
+<% end %>
+<br>
+<%= link_to 'Cancel', customers_path %>
+</div>

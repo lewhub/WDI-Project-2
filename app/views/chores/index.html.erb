@@ -1,6 +1,9 @@
-<% @chores.each do |c| %>
-  <div><b><%= c.chore_title %></b></div>
+<h1 style='text-align: center;'>All Chores</h1>
+<% @chores.reverse.each do |c| %>
+  <div><b><%= link_to c.chore_title, chore_path(c) %></b></div>
   <div>Price: <%= c.price %></div>
   <div>Workers Currently Available: <%= c.worker_count %></div>
+  <div>Created: <%= c.created_at.strftime("%I:%M %p")%></div>
   <hr>
 <% end %>
+<%= link_to 'Add A New Chore', new_chore_path %>

@@ -1,2 +1,41 @@
-<h1>Workers#show</h1>
-<p>Find me in app/views/workers/show.html.erb</p>
+<h1 style='text-align:center;'>Worker ID: <%= @worker.id %></h1>
+<div style='text-align: center;'>
+  <h3>Worker Name: <%= @worker.name %><h3>
+  <h3>Worker Avilability: <%= @worker.availability %></h3>
+
+  <h2>Orders</h2>
+  <% if @worker.orders.count > 0 %>
+    <% @worker.orders.reverse.each do |ovo| %>
+      Order # <%= link_to ovo.id, order_path(ovo) %> |
+      Chore Name: <%= ovo.chore.chore_title %> |
+      Chore # <%= ovo.chore.id %> |
+
+      Customer Name: <%= Customer.find(ovo.customer_id).name %> |
+      Customer # <%= Customer.find(ovo.customer_id).id %> |
+
+
+      Status: <%= ovo.status %> |
+      Payment: <%= ovo.payment %> |
+      Worker Name: <%= @worker.name %> |
+      Worker # <%= @worker.id %>
+      <hr>
+    <% end %>
+  <% end %>
+
+  <% if @worker.reccurring_customers == nil %>
+    <h3>No Recurring Customers Yet.</h3>
+    <% else %>
+    <h3>Worker Reccurring Customers: <%= @worker.reccurring_customers %></h3>
+  <% end %>
+  <% if @worker.order_id == nil %>
+    <h3>Not hired yet.</h3>
+  <% else %>
+
+  <% end %>
+  <h3>Worker Profile:<br><%= simple_format(@worker.profile) %></h3>
+  <%= link_to 'All Workers', workers_path %>
+  <br>
+  <%= link_to 'Edit Worker Info', edit_worker_path(@worker) %>
+  <br>
+  <%= link_to 'Delete This Worker Account', delete_worker_path(@worker), method: :delete, data: { confirm: 'Are you sure you want to delete your worker account?'}%>
+</div>

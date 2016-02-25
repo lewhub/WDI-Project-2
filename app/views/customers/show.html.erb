@@ -1,2 +1,31 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<h1 style='text-align: center;'><%= "#{@customer.name}'s" %> Profile Page</h1>
+<div style='text-align: center;'>
+<h2>Cart: <%= @customer.cart %></h2>
+<h2>My Chores: <%= @customer.my_chores %></h2>
+<h1>Orders:</h1>
+  <% if @customer.orders.count == 0 %>
+    <h3>No Orders Placed Yet.</h3>
+  <% else %>
+    <% @customer.orders.each do |o| %>
+      Chore Ordered: <b><%= o.chore.chore_title %></b> |
+
+
+      Worker Hired: <b><%= Worker.find(o.worker_id).name %></b> |
+      Worker ID: <%= link_to Worker.find(o.worker_id).id, worker_path(Worker.find(o.worker_id)) %>
+
+
+      Order Number: <b><%= link_to o.id, order_path(o) %></b> |
+      Status: <%= o.status %> |
+      Payment: <%= o.payment %> |
+      Start Date: <%= o.expected_start_date %> |
+      Ordered By: <b><%= @customer.name %></b>
+      <hr>
+    <% end %>
+  <% end %>
+
+<%= link_to 'Edit Your Info', edit_customer_path(@customer) %>
+<br>
+<%= link_to 'Delete Your Account', delete_customer_path, method: :delete, data: { confirm: 'Are you sure you want to delete your account?' }%>
+<br>
+<%= link_to 'All Customers', customers_path %>
+</div>

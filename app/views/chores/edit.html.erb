@@ -1,2 +1,17 @@
-<h1>Chores#edit</h1>
-<p>Find me in app/views/chores/edit.html.erb</p>
+<h1 style='text-align: center;'>Edit Chore With ID: <%= @chore.id %></h1>
+<div style='text-align: center;'>
+<%= form_for @chore do |f| %>
+  <%= f.label :chore_title, 'Change Chore Title'%>
+  <%= f.text_field :chore_title %>
+  <br>
+  <%= f.label :price, 'Change Price Of Chore' %>
+  <%= f.text_field :price %>
+  <br>
+  <%= f.label :worker_count, 'Change Worker Count'%>
+  <%= f.number_field :worker_count %>
+  <br>
+  <%= f.submit %>
+<% end %>
+<br>
+<%= link_to 'Cancel', chore_path(@chore)%>
+</div>

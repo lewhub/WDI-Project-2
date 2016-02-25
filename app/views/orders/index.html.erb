@@ -1,2 +1,47 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<h1 style='text-align: center;'>All Orders</h1>
+<div style='text-align: center;'>
+  <% @orders.reverse.each do |o| %>
+    <p>Order #:<%= link_to o.id, order_path(o) %> <br>
+
+    <% if o.customer != nil %>
+      <h3>Customer Name: <%= o.customer.name %></h3>
+      <h3>Customer ID: <%= o.customer.id %></h3>
+      <% else %>
+        <% @customers.each do |c| %>
+          <% if c.orders.count > 0 %>
+            <% c.orders.each do |od| %>
+              <% if od.id == o.id %>
+                <h2>Customer: <%= Customer.find(od.customer_id).name %></h2>
+                <h2>Customer ID: <%= Customer.find(od.customer_id).id %></h2>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+    <% end %>
+
+      <br> Chore Ordered (Name/ID): <%= o.chore.chore_title %> #<%= o.chore.id %> <br>
+
+      <% if o.worker != nil %>
+        <h3>Worker Name: <%= o.worker.name %></h3>
+        <h3>Worker ID: <%= o.worker.id %></h3>
+        <% else %>
+          <% @workers.each do |w| %>
+            <% if w.orders.count > 0 %>
+              <% w.orders.each do |ofo| %>
+                <% if ofo.id == o.id %>
+                  <h2>Worker Name: <%= Worker.find(ofo.worker_id).name %></h2>
+                  <h2>Worker ID: <%= Worker.find(ofo.worker_id).id %></h2>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+      <% end %>
+
+
+          Order Status: <%= o.status %> <br> Order Payment Status: <%= o.payment%> <br>
+          Expected Start Date: <%= o.expected_start_date %>
+    </p>
+    <hr>
+  <% end %>
+  <%= link_to 'New Order', new_order_path %>
+</div>

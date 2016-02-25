@@ -1,2 +1,14 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+<h1 style='text-align: center;'>Edit Customer Info</h1>
+<div style='text-align: center;'>
+<%= form_for @customer do |f| %>
+  <%= f.label :name, 'Change Name' %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :credit_card_info, 'Change Credit Card Number'%>
+  <%= f.text_field :credit_card_info %>
+  <br>
+  <%= f.submit %>
+<% end %>
+<br>
+<%= link_to 'Cancel', customers_path %>
+</div>

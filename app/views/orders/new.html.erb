@@ -1,2 +1,98 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<h1 style='text-align: center;'>Create a New Order</h1>
+
+<!-- <h3><u>Pick a Chore</u></h3>
+<div>
+  <form>
+    <% @chores.reverse.each do |c| %>
+      <input type="radio" name="chore" value="<% c %>" checked > <%= c.chore_title %><br>
+    <% end %>
+  </form>
+</div>
+
+<h3><u>Pick a Worker</u></h3>
+<div>
+  <form>
+    <% @workers.reverse.each do |w| %>
+      <input type="radio" name="worker" value="<% w %>" checked > <%= w.name %><br>
+    <% end %>
+</form>
+</div> -->
+
+<!-- <h3><u>Pick a Customer</u></h3>
+<div>
+  <form>
+    <% @customers.reverse.each do |cus| %>
+      <input type="radio" name="customer" value=<%= cus.name %> checked> <%= cus.name %><br>
+    <% end %>
+  </form>
+</div> -->
+
+<div>
+<h3 id='heading' style='margin-bottom: 4px;'><u>More Info About Order:</u></h3>
+<%= form_for @order do |f| %>
+  <%= f.label :status, 'Completed Status (T/F)'%>
+  <%= f.text_field :status %>
+  <br>
+  <%= f.label :payment, 'Paid Status (T/F)'%>
+  <%= f.text_field :payment %>
+  <br>
+  <%= f.label :expected_start_date, 'Start Date' %>
+  <%= f.text_field :expected_start_date %>
+  <br>
+  Customer:
+  <% @customers.reverse.each do |c| %>
+    <% if c.order_id == nil %>
+      <%= f.radio_button :customer_id, c.id %>
+      <%= f.label :customer_id, c.name%>
+    <% else %>
+      <%= f.radio_button :customer_id, c.id %>
+      <%= f.label :customer_id, c.name + '(customer already has order id)'%>
+    <% end %>
+  <% end %>
+  <br>
+  Chore:
+  <% @chores.reverse.each do |ch| %>
+    <% if ch.order_id == nil %>
+    <%= f.radio_button :chore_id, ch.id %>
+    <%= f.label :chore_id, ch.chore_title%>
+    <% end %>
+  <% end %>
+  <br>
+  Worker:
+  <% @workers.reverse.each do |w| %>
+  <% if w.order_id == nil %>
+  <%= f.radio_button :worker_id, w.id %>
+  <%= f.label :worker_id, w.name%>
+  <% else %>
+
+    <%= f.radio_button :worker_id, w.id %>
+    <%= f.label :worker_id, w.name + '(worker already has order id)'%>
+  <% end %>
+  <% end %>
+  <br>
+
+  <!-- <div id='cus-but'><%= f.radio_button :customer, @customers.first %></div>
+  <%= f.label :customer, @customers.first.name%>
+  <br> -->
+  <%= f.submit %>
+<% end %>
+<br>
+<%= link_to 'Cancel', orders_path %>
+</div>
+
+
+<script>
+  // done = $('#submit-order')
+  // heading = $('#heading')
+  // rad = $('input')
+  // ra = <%@customer_one%>
+  // done.on('click', function(){
+  //   event.preventDefault()
+  //   ra = $('input:checked').val()
+  //
+  //   heading.html('#{<%@customer_one%>}')
+  // })
+  // $('input').on('click', function(){
+  //   heading.html($('input:checked').val() + ' is checked')
+  // })
+</script>

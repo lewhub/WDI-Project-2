@@ -1,2 +1,17 @@
-<h1>Workers#edit</h1>
-<p>Find me in app/views/workers/edit.html.erb</p>
+<h1 style='text-align:center;'>Edit Worker With ID: <%= @worker.id %> (<%= @worker.name %>)</h1>
+<div style='text-align:center;'>
+  <%= form_for @worker do |f| %>
+    <%= f.label :name, 'Change Name'%>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :availability, 'Update Current Availability'%>
+    <%= f.text_field :availability %>
+    <br>
+    <%= f.label :profile, 'Update Profile Description:'%>
+    <br>
+    <%= f.text_area :profile %>
+    <br>
+    <br>
+    <%= f.submit %>
+  <% end %>
+</div>

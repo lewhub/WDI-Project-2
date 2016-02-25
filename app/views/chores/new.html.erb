@@ -1,2 +1,17 @@
-<h1>Chores#new</h1>
-<p>Find me in app/views/chores/new.html.erb</p>
+<h1 style='text-align:center;'>Create A New Chore</h1>
+<div style='text-align: center;'>
+  <%= form_for @chore do |f| %>
+    <%= f.label :chore_title, 'Name Of Chore' %>
+    <%= f.text_field :chore_title %>
+    <br>
+    <%= f.label :price, 'Price Of Chore' %>
+    <%= f.text_field :price %>
+    <br>
+    <%= f.label :worker_count, 'Number of Workers' %>
+    <%= f.number_field :worker_count %>
+    <br>
+    <%= f.submit %>
+<% end %>
+<br>
+<%= link_to 'Cancel', chores_path %>
+</div>

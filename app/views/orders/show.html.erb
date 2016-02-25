@@ -1,2 +1,47 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h1 style='text-align: center;'>Order With ID: <%= @order.id %> Details</h1>
+<div style='text-align: center;'>
+  <h3>Status: <%= @order.status %></h3>
+  <h3>Payment Status:  <%= @order.payment %></h3>
+  <h3>Expected Start Date: <%= @order.expected_start_date %></h3>
+
+  <% if @order.customer != nil %>
+  <h3>Customer: <%= link_to @order.customer.name, customer_path(@order.customer)%></h3>
+  <h3>Customer ID: <%= @order.customer.id if @order.customer %></h3>
+  <% else %>
+    <% @customers.each do |c| %>
+      <% if c.orders.count > 0 %>
+        <% c.orders.each do |o| %>
+          <% if o.id == @order.id %>
+            <h1>Customer: <%= Customer.find(o.customer_id).name %></h1>
+            <h1>Customer ID: <%= Customer.find(o.customer_id).id %></h1>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if @order.worker != nil %>
+  <h3>Worker: <%= @order.worker.name if @order.worker %></h3>
+  <h3>Worker ID: <%= link_to @order.worker.id, worker_path(@order.worker) if @order.worker %></h3>
+  <% else %>
+    <% @workers.each do |w| %>
+      <% if w.orders.count > 0 %>
+        <% w.orders.each do |od| %>
+          <% if od.id == @order.id %>
+            <h1>Worker: <%= Worker.find(od.worker_id).name %></h1>
+            <h1>Worker ID: <%= Worker.find(od.worker_id).id %></h1>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+
+
+
+  <h3>Chore: <%= @order.chore.chore_title %></h3>
+  <h3>Chore ID: <%= link_to @order.chore.id, chore_path(@order.chore) %></h3>
+  <br>
+  <br>
+  <%= link_to 'All Orders', orders_path %>
+</div>

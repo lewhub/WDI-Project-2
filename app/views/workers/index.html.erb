@@ -1,2 +1,8 @@
-<h1>Workers#index</h1>
-<p>Find me in app/views/workers/index.html.erb</p>
+<h1 style='text-align: center;'>All Workers</h1>
+<% @workers.reverse.each do |w| %>
+  <h3>Worker Name: <%= link_to w.name, worker_path(w) %></h3>
+  <p>Worker Availability: <%= w.availability %></p>
+  <p>Worker ID: <b><%= w.id %></b></p>
+  <hr>
+<% end %>
+<%= link_to 'Create Worker Account', new_worker_path %>
