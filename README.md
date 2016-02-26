@@ -45,6 +45,8 @@ Wire Frames: Work flow for when a customer places an order.
 
 * Ruby On Rails
 
+* Database: Postgresql
+
 * CSS
 
 * HTML
