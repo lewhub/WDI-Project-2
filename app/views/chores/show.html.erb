@@ -1,3 +1,7 @@
+<% if logged_in_as_customer? %>
+  <% if current_customer.name == 'admin-private' %>
+
+
 <h1 style='text-align: center;'>Chore ID: <%= @chore.id %> Details Page</h1>
 <div style='text-align: center;'>
   <h3>Chore Title: <%= @chore.chore_title %></h3>
@@ -14,3 +18,10 @@
   <br>
   <%= link_to 'Delete This Chore', delete_chore_path(@chore), method: :delete, data: { confirm: 'Are you sure you want to delete this chore?'}%>
 </div>
+
+<% else %>
+  <div style='text-align: center'>You do not have access to the information on this page.</div>
+<% end %>
+<% else %>
+  <div style='text-align: center'>You do not have access to the information on this page.</div>
+<% end %>

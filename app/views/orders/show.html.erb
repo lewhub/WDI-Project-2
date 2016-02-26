@@ -1,3 +1,6 @@
+<% if logged_in_as_customer? %>
+  <% if current_customer.name == 'admin-private' %>
+
 <h1 style='text-align: center;'>Order With ID: <%= @order.id %> Details</h1>
 <div style='text-align: center;'>
   <h3>Status: <%= @order.status %></h3>
@@ -46,3 +49,10 @@
   <%= link_to 'All Orders', orders_path %> <br>
   <!-- <%= link_to 'Edit Order', edit_order_path(@order) %> -->
 </div>
+
+<% else %>
+  <div style='text-align: center'>You do not have access to the information on this page.</div>
+<% end %>
+<% else %>
+  <div style='text-align: center'>You do not have access to the information on this page.</div>
+<% end %>

@@ -1,6 +1,13 @@
-<h1 style='text-align: center;'>All Customers</h1>
-<% @customers.reverse.each do |c| %>
-  <h2>Customer Name: <%= link_to c.name, customer_path(c) %></h2>
-  <p>Customer ID: <%= c.id %></p>
-  <hr>
+<% if logged_in_as_customer? || logged_in_as_worker? %>
+
+    <h1 style='text-align: center; margin-top: 70px; font-size: 40px;'><u>All Customers</u></h1>
+    <% @customers.reverse.each do |c| %>
+      <h2>Customer Name: <%= link_to c.name, customer_path(c) %></h2>
+      <p>Customer ID: <%= c.id %></p>
+      <hr>
+    <% end %>
+
+  <% else %>
+    <div style='text-align: center; font-size: 100px; font-family: I"Comic Sans MS", cursive, sans-serif;'>Welcome to Do My Chores!!<br>Where you can hire others to do the things you are too lazy to do! <hr>Sign up as a Worker or Customer Today!</div>
+
 <% end %>

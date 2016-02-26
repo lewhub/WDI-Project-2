@@ -1,86 +1,201 @@
-<h1 style='text-align: center;'>Create a New Order</h1>
+<h1 style='text-align: center; margin-top: 70px;'>Create a New Order</h1>
 
-<!-- <h3><u>Pick a Chore</u></h3>
 <div>
-  <form>
-    <% @chores.reverse.each do |c| %>
-      <input type="radio" name="chore" value="<% c %>" checked > <%= c.chore_title %><br>
-    <% end %>
-  </form>
+<h3 id='heading' style='margin-bottom: 4px; text-align: center; font-size: 40px; font-family: "Times New Roman", Georgia, Serif; margin-top: -4px;'><u>More Info About Order:</u></h3>
+
+
+
+
+
+
+<%= form_for @order do |f| %>
+
+  <%= f.label :status, 'Completed Status (T/F)', style: 'margin-right: 50px; font-size: 50px;'%>
+  <%= f.text_field :status, style: 'height: 60px; width: 900px; border-radius: 12px;'%>
+
+  <br>
+  <%= f.label :payment, 'Paid Status (T/F)', style: 'margin-right: 206px; font-size: 50px;'%>
+  <%= f.text_field :payment, style: 'height: 60px; width: 900px; border-radius: 12px;' %>
+  <br>
+  <%= f.label :expected_start_date, 'Start Date', style: 'margin-right: 357px; font-size: 50px;' %>
+  <%= f.text_field :expected_start_date, style: 'height: 60px; width: 900px; border-radius: 12px;' %>
+  <br>
+
+
+  <button type="button" style='margin-left: 604px; margin-top: 20px;' class="btn btn-success" data-toggle='modal' data-target='.bs-example-modal-lg' id="chore-modal">Choose Chore</button>
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby='myLargeModalLabel'>
+  <div class="modal-dialog modal-lg" style='width:60%;'>
+    <div class="modal-content">
+      <% @chores.each do |ch| %>
+        <% if ch.order_id == nil %>
+        <container style='font-size:35px;'>
+        <% if ch.chore_title == 'Pick Up Mail'%>
+        <i class="fa fa-envelope fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+
+        <% elsif ch.chore_title == 'Pick Up Dry Cleaning'%>
+        <i class="fa fa-user-secret fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Car Wash'%>
+        <i class="fa fa-car fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 230px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Clean Dishes'%>
+        <i class="fa fa-codiepie fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Pick Up Snacks'%>
+        <i class="fa fa-cutlery fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Pick Up Groceries'%>
+        <i class="fa fa-shopping-cart fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Clean Bathroom'%>
+        <i class="fa fa-life-ring fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Do My Taxes'%>
+        <i class="fa fa-calculator fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Pick Up Parents From Airport'%>
+        <i class="fa fa-plane fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Pick Up Chrismas Tree'%>
+        <i class="fa fa-tree fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Edit Video'%>
+        <i class="fa fa-video-camera fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Return A Library Book'%>
+        <i class="fa fa-book fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Drop Off Prescription At Pharmacy'%>
+        <i style='color:rgb(154, 42, 39);' class="fa fa-plus-square fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px; color: rgb(84, 150, 227);">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Organize My Documents'%>
+        <i class='fa fa-folder-open fa-5x fa-border'><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Apply For A Patent'%>
+        <i class='fa fa-trademark fa-5x fa-border'><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Pick Up My College Textbooks'%>
+        <i class="fa fa-university fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Clean My Boat'%>
+        <i class="fa fa-ship fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 230px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Pick Up My Contacts'%>
+        <i class="fa fa-eye fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Take My Bike To The Bike Repair Store'%>
+        <i class="fa fa-bicycle fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 240px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Take Out My Trash' %>
+        <i class="fa fa-trash-o fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        <% elsif ch.chore_title == 'Walk Dog' %>
+        <i class="fa fa-paw fa-5x fa-border"><p style="font-size: 11px; margin-top: -70px; margin-left: 200px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></i>
+        <div style='text-align: center; margin-top: -20px;'>
+        <%= f.radio_button :chore_id, ch.id %>
+        <%= f.label :chore_id, ch.chore_title, style: 'font-size: 15px;'%><br>
+        </div>
+        </container>
+        <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-<h3><u>Pick a Worker</u></h3>
-<div>
-  <form>
-    <% @workers.reverse.each do |w| %>
-      <input type="radio" name="worker" value="<% w %>" checked > <%= w.name %><br>
-    <% end %>
-</form>
-</div> -->
 
-<!-- <h3><u>Pick a Customer</u></h3>
-<div>
-  <form>
-    <% @customers.reverse.each do |cus| %>
-      <input type="radio" name="customer" value=<%= cus.name %> checked> <%= cus.name %><br>
-    <% end %>
-  </form>
-</div> -->
-
-<div>
-<h3 id='heading' style='margin-bottom: 4px;'><u>More Info About Order:</u></h3>
-<%= form_for @order do |f| %>
-  <%= f.label :status, 'Completed Status (T/F)'%>
-  <%= f.text_field :status %>
   <br>
-  <%= f.label :payment, 'Paid Status (T/F)'%>
-  <%= f.text_field :payment %>
+  <div style='margin-left: 604px; margin-top: 15px; font-size: 30px; font-family: "Times New Roman", Georgia, Serif;'>
+  Choose A Worker:
   <br>
-  <%= f.label :expected_start_date, 'Start Date' %>
-  <%= f.text_field :expected_start_date %>
-  <br>
-  Chore:
-  <% @chores.reverse.each do |ch| %>
-    <% if ch.order_id == nil %>
-    <%= f.radio_button :chore_id, ch.id %>
-    <%= f.label :chore_id, ch.chore_title%>
-    <% end %>
-  <% end %>
-  <br>
-  Worker:
   <% @workers.reverse.each do |w| %>
   <% if w.order_id == nil %>
   <%= f.radio_button :worker_id, w.id %>
-  <%= f.label :worker_id, w.name%>
+  <%= f.label :worker_id, w.name%><br>
   <% else %>
     <%= f.radio_button :worker_id, w.id %>
-    <%= f.label :worker_id, w.name + '(worker already has order id)'%>
+    <%= f.label :worker_id, w.name + ' (Currently Completing Another Chore)'%><br>
   <% end %>
   <% end %>
   <br>
-
-  <!-- <div id='cus-but'><%= f.radio_button :customer, @customers.first %></div>
-  <%= f.label :customer, @customers.first.name%>
-  <br> -->
   <%= f.submit %>
+</div>
 <% end %>
+
+
+
+
 <br>
-<%= link_to 'Cancel', orders_path %>
+<div style='margin-left: 604px; margin-top: 15px; font-size: 30px; font-family: "Times New Roman", Georgia, Serif; margin-top: -4px;'>
+<%= link_to 'Cancel', customers_path %>
+</div>
 </div>
 
 
 <script>
-  // done = $('#submit-order')
-  // heading = $('#heading')
-  // rad = $('input')
-  // ra = <%@customer_one%>
-  // done.on('click', function(){
-  //   event.preventDefault()
-  //   ra = $('input:checked').val()
-  //
-  //   heading.html('#{<%@customer_one%>}')
-  // })
-  // $('input').on('click', function(){
-  //   heading.html($('input:checked').val() + ' is checked')
-  // })
+  $('#chore-modal').on('click', function(){
+    $('body').css({color: 'rgb(84, 150, 227)'})
+
+  })
 </script>

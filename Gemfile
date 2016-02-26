@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'amoeba'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap_form'  # if you want bootstrap forms!
+gem 'font-awesome-sass'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

@@ -1,3 +1,6 @@
+<% if logged_in_as_customer? %>
+  <% if current_customer.name == 'admin-private' %>
+
 <h1 style='text-align: center;'>All Chores</h1>
 <% @chores.reverse.each do |c| %>
   <div><b><%= link_to c.chore_title, chore_path(c) %></b></div>
@@ -7,3 +10,10 @@
   <hr>
 <% end %>
 <%= link_to 'Add A New Chore', new_chore_path %>
+
+<% else %>
+  <div style='text-align: center'>You do not have access to the information on this page.</div>
+<% end %>
+<% else %>
+  <div style='text-align: center'>You do not have access to the information on this page.</div>
+<% end %>

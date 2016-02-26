@@ -1,12 +1,15 @@
 <h1 style='text-align: center;'>Log In To Your Customer Account</h1>
 <%= form_tag sessions_path do %>
-  <%= label_tag :name, 'Enter Name' %>
-  <%= text_field_tag :name, params[:name] %>
+  <%= label_tag :name, 'Enter Name', style: 'margin-right: 262px; font-size: 50px;' %>
+  <%= text_field_tag :name, params[:name], style: 'height: 60px; width: 900px; border-radius: 12px;' %>
   <br>
-  <%= label_tag :password, 'Enter Your Password'%>
-  <%= password_field_tag :password, nil %>
+  <%= label_tag :password, 'Enter Your Password', style: 'margin-right: 35px; font-size: 50px;'%>
+  <%= password_field_tag :password, nil, style: 'height: 60px; width: 900px; border-radius: 12px;' %>
   <br>
+  <div style='margin-left: 550px; margin-top: 15px; font-size: 30px; font-family: "Times New Roman", Georgia, Serif;'>
   <%=submit_tag 'Log In To Your Customer Account' %>
-  <br>
+  <p style='display: inline-block; margin-left: 20px; border: 5px solid rgb(168, 162, 182); border-radius: 25px; padding: 5px;'>
   <%= link_to "Create an customer account?", new_customer_path %>
+</p>
+</div>
 <% end %>
