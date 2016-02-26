@@ -20,7 +20,7 @@ A user can sign up either as a customer or a worker for hire. We all have daily 
 
 
 <div style='text-align:center;'>
-![alt text](/app/assets/images/do_my_chores_erd_diagram.png =1200x650)
+![alt text](app/assets/images/do_my_chores_erd_diagram.png =1200x650 "ERD Diagram")
 
 
 This is my ERD Diagram with 5 entities and 1 join table.
@@ -28,7 +28,7 @@ This is my ERD Diagram with 5 entities and 1 join table.
 <div style='text-align:left'>
 
 <div style='text-align:center;'>
-![alt text](/app/assets/images/wire_frames_dmc.PNG =1000x650)
+![alt text](app/assets/images/wire_frames_dmc.PNG =1000x650 "Wire Frames")
 
 
 Wire Frames: Work flow for when a customer places an order.
