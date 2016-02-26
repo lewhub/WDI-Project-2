@@ -20,7 +20,7 @@ A user can sign up either as a customer or a worker for hire. We all have daily 
 
 
 <div style='text-align:center;'>
-![alt text](app/assets/images/do_my_chores_erd_diagram.png =1200x650 "ERD Diagram")
+![alt text](/app/assets/images/do_my_chores_erd_diagram.png =1200x650)
 
 
 This is my ERD Diagram with 5 entities and 1 join table.
@@ -28,7 +28,7 @@ This is my ERD Diagram with 5 entities and 1 join table.
 <div style='text-align:left'>
 
 <div style='text-align:center;'>
-![alt text](app/assets/images/wire_frames_dmc.PNG =1000x650 "ERD Diagram")
+![alt text](/app/assets/images/wire_frames_dmc.PNG =1000x650)
 
 
 Wire Frames: Work flow for when a customer places an order.
@@ -61,3 +61,5 @@ Wire Frames: Work flow for when a customer places an order.
 * Allow customers to search available workers by location.
 
 * Allow customers to create there own chores that they want to hire a worker to do.
+
+* Allow customers to leave a review on worker's profiles that they have hired.
