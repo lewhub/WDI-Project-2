@@ -39,17 +39,6 @@
   <%= f.label :expected_start_date, 'Start Date' %>
   <%= f.text_field :expected_start_date %>
   <br>
-  Customer:
-  <% @customers.reverse.each do |c| %>
-    <% if c.order_id == nil %>
-      <%= f.radio_button :customer_id, c.id %>
-      <%= f.label :customer_id, c.name%>
-    <% else %>
-      <%= f.radio_button :customer_id, c.id %>
-      <%= f.label :customer_id, c.name + '(customer already has order id)'%>
-    <% end %>
-  <% end %>
-  <br>
   Chore:
   <% @chores.reverse.each do |ch| %>
     <% if ch.order_id == nil %>
@@ -64,7 +53,6 @@
   <%= f.radio_button :worker_id, w.id %>
   <%= f.label :worker_id, w.name%>
   <% else %>
-
     <%= f.radio_button :worker_id, w.id %>
     <%= f.label :worker_id, w.name + '(worker already has order id)'%>
   <% end %>

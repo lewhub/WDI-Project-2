@@ -1,4 +1,7 @@
 class WorkersController < ApplicationController
+
+  before_action :authorize_worker, only: [:show]
+
   def index
     @workers = Worker.all
   end
@@ -10,7 +13,11 @@ class WorkersController < ApplicationController
   def create
     @worker = Worker.new(worker_params)
     if @worker.save
-      redirect_to workers_path
+      flash[:new_worker_account] = "Worker Account successfully created! Please Log In."
+      redirect_to new_worker_session_path
+    else
+      flash[:new_worker_account_fail] = "Sign up info invalid. Try Again."
+      redirect_to new_worker_path
     end
   end
 

@@ -7,7 +7,38 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% if logged_in_as_customer? %>
+  <%= link_to "Logout of customer account: #{current_customer.name}", logout_path %>
+  <% elsif logged_in_as_worker? %>
+    <%= link_to "Logout of worker account: #{current_worker.name}", logout_worker_path %>
+    <% else %>
+    <%= link_to 'Customer Login/Signup', new_session_path %>
+    <%= link_to 'Worker Login/Signup', new_worker_session_path %>
+<% end %>
+<% if flash[:success] %>
+  <div class='alert-m' style='text-align: center;'><%= flash[:success] %></div>
+  <% elsif flash[:failure] %>
+  <div class='alert-m' style='text-align: center;'><%= flash[:failure] %></div>
+  <% elsif flash[:restrict] %>
+    <div class='alert-m' style='text-align: center;'><%= flash[:restrict] %></div>
+    <% elsif flash[:new_customer_account] %>
+      <div class='alert-m' style='text-align: center;'><%= flash[:new_customer_account] %></div>
+      <% elsif flash[:new_customer_account_fail] %>
+        <div class='alert-m' style='text-align: center;'><%= flash[:new_customer_account_fail] %></div>
+        <% elsif flash[:restrict_worker] %>
+          <div class='alert-m' style='text-align: center;'><%= flash[:restrict_worker] %></div>
+          <% elsif flash[:success_worker] %>
+            <div class='alert-m' style='text-align: center;'><%= flash[:success_worker] %></div>
+            <% elsif flash[:failure_worker_log_in] %>
+              <div class='alert-m' style='text-align: center;'><%= flash[:failure_worker_log_in] %></div>
+              <% elsif flash[:new_worker_account] %>
+                <div class='alert-m' style='text-align: center;'><%= flash[:new_worker_account] %></div>
+                <% elsif flash[:new_worker_account_fail] %>
+                  <div class='alert-m' style='text-align: center;'><%= flash[:new_worker_account_fail] %></div>
+<% end %>
+<script>
+  $('.alert-m').delay(2000).slideUp()
+</script>
 <%= yield %>
 
 </body>

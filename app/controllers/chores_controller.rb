@@ -20,8 +20,10 @@ class ChoresController < ApplicationController
 
   def destroy
     @chore = Chore.find(params[:id])
-    if @chore.destroy
-      redirect_to chores_path
+    if @chore.order_id == nil
+      if @chore.destroy
+        redirect_to chores_path
+      end
     end
   end
 

@@ -1,2 +1,12 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<h1 style='text-align: center;'>Log In To Your Customer Account</h1>
+<%= form_tag sessions_path do %>
+  <%= label_tag :name, 'Enter Name' %>
+  <%= text_field_tag :name, params[:name] %>
+  <br>
+  <%= label_tag :password, 'Enter Your Password'%>
+  <%= password_field_tag :password, nil %>
+  <br>
+  <%=submit_tag 'Log In To Your Customer Account' %>
+  <br>
+  <%= link_to "Create an customer account?", new_customer_path %>
+<% end %>

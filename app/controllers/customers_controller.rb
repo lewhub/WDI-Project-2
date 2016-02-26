@@ -1,4 +1,8 @@
 class CustomersController < ApplicationController
+
+  before_action :authorize_customer, only: [:show]
+  
+
   def index
     @customers = Customer.all
   end
@@ -10,7 +14,11 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
-      redirect_to customers_path
+      flash[:new_customer_account] = "Customer Account successfully created! Please Log In."
+      redirect_to new_session_path
+    else
+      flash[:new_customer_account_fail] = "Sign up info invalid. Try Again."
+      redirect_to new_customer_path
     end
   end
 

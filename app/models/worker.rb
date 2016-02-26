@@ -3,4 +3,5 @@ class Worker < ActiveRecord::Base
   has_and_belongs_to_many :orders
   has_many :chores, through: :order
   has_many :customers, through: :order
+  validates :name, uniqueness: true
 end

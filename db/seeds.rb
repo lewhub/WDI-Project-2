@@ -31,23 +31,3 @@ Customer.create({history: 'none', name: 'Tim', password: 'tim', password_confirm
 Customer.create({history: 'none', name: 'Mark', password: 'tim', password_confirmation: 'tim', credit_card_info: '1111-0000-4444-6666', cart: 'empty', my_chores: 'empty'})
 Customer.create({history: 'none', name: 'Bill', password: 'tim', password_confirmation: 'tim', credit_card_info: '1111-0000-4444-6666', cart: 'empty', my_chores: 'empty'})
 Customer.create({history: 'none', name: 'Nancy', password: 'tim', password_confirmation: 'tim', credit_card_info: '1111-0000-4444-6666', cart: 'empty', my_chores: 'empty'})
-
-# Orders
-# Order.create({status: 'Done', payment: 'Fully Paid', expected_start_date: 'Today At Noon'})
-# Order.create({status: 'Not Started Yet', payment: 'Not Paid', expected_start_date: 'Tomorrow At Noon'})
-# Order.create({status: 'In Progress', payment: 'Paid In Full', expected_start_date: 'Friday At Noon'})
-
-# Order.first.customer = Customer.find_by({name: 'Tim'})
-# Customer.find_by({name: 'Tim'}).orders << Order.first
-# Order.second.customer = Customer.find_by({name: 'Mark'})
-# Customer.find_by({name: 'Mark'}).orders << Order.second
-# Order.last.customer = Customer.find_by({name: 'Bill'})
-# Customer.find_by({name: 'Bill'}).orders << Order.last
-#
-# Order.first.chore = Chore.find_by({chore_title: 'Walk Dog'})
-# Order.second.chore = Chore.find_by({chore_title: 'Pick Up Dry Cleaning'})
-# Order.last.chore = Chore.find_by({chore_title: 'Clean Dishes'})
-#
-# Order.first.worker = Worker.find_by({name: 'Bob'})
-# Order.second.worker = Worker.find_by({name: 'Rover'})
-# Order.last.worker = Worker.find_by({name: 'Lisa'})

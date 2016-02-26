@@ -1,23 +1,28 @@
-<h1 style='text-align:center;'>Create A New Worker Account</h1>
 <div style='text-align: center;'>
-  <%= form_for @worker do |f| %>
-    <%= f.label :name, 'Enter Your Name' %>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :availability, 'Set Current Availability'%>
-    <%= f.text_field :availability %>
-    <br>
-    <%= f.label :password, 'Choose a password'%>
-    <%= f.password_field :password %>
-    <br>
-    <%= f.label :password_confirmation, 'Confirm password' %>
-    <%= f.password_field :password_confirmation %>
-    <br>
-    <b><%= f.label :profile, 'Description:'%></b>
-    <br>
-    <%= f.text_area :profile %>
-    <br>
-    <br>
-    <%= f.submit %>
+  <% if !logged_in_as_worker? && !logged_in_as_customer? %>
+  <h1 style='text-align:center;'>Create A New Worker Account</h1>
+    <%= form_for @worker do |f| %>
+      <%= f.label :name, 'Enter Your Name' %>
+      <%= f.text_field :name %>
+      <br>
+      <%= f.label :availability, 'Set Current Availability'%>
+      <%= f.text_field :availability %>
+      <br>
+      <%= f.label :password, 'Choose a password'%>
+      <%= f.password_field :password %>
+      <br>
+      <%= f.label :password_confirmation, 'Confirm password' %>
+      <%= f.password_field :password_confirmation %>
+      <br>
+      <b><%= f.label :profile, 'Description:'%></b>
+      <br>
+      <%= f.text_area :profile %>
+      <br>
+      <br>
+      <%= f.submit %>
+    <% end %>
+    <% else %>
+      <div>Log out to create a account</div>
   <% end %>
+
 </div>

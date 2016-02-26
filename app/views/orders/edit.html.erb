@@ -1,2 +1,45 @@
-<h1>Orders#edit</h1>
-<p>Find me in app/views/orders/edit.html.erb</p>
+<h1 style='text-align: center;'>Edit Order With ID: <%= @order.id %></h1>
+<%= form_for @order do |f| %>
+  <%= f.label :status, 'Update Order Status'%>
+  <%= f.text_field :status %>
+  <br>
+  <%= f.label :payment, 'Update Payment Status'%>
+  <%= f.text_field :payment %>
+  <br>
+  <%= f.label :expected_start_date, 'Change Start Date'%>
+  <%= f.text_field :expected_start_date %>
+  <br>
+  Change Customer:
+  <% @customers.reverse.each do |c| %>
+    <% if c.order_id == nil %>
+      <%= f.radio_button :customer_id, c.id %>
+      <%= f.label :customer_id, c.name %>
+    <% else %>
+      <%= f.radio_button :customer_id, c.id %>
+      <%= f.label :customer_id, c.name + '(customer already has order id)'%>
+    <% end %>
+  <% end %>
+  <br>
+  Change Chore:
+  <% @chores.reverse.each do |ch| %>
+
+    <%= f.radio_button :chore_id, ch.id %>
+    <%= f.label :chore_id, ch.chore_title%>
+
+  <% end %>
+  <br>
+  Change Worker:
+  <% @workers.reverse.each do |w| %>
+  <% if w.order_id == nil %>
+  <%= f.radio_button :worker_id, w.id %>
+  <%= f.label :worker_id, w.name%>
+  <% else %>
+    <%= f.radio_button :worker_id, w.id %>
+    <%= f.label :worker_id, w.name + '(worker already has order id)'%>
+    <% end %>
+  <% end %>
+  <br>
+<%= f.submit %>
+<% end %>
+<br>
+<%= link_to 'Cancel', order_path(@order) %>

@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
-  has_one :customer
-  has_one :worker
-  has_one :chore
+  has_one :customer, dependent: :destroy
+  has_one :worker, dependent: :destroy
+  has_one :chore, dependent: :destroy
 
   amoeba do
     enable
