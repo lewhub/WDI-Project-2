@@ -22,10 +22,10 @@
   <br>
 
 
-  <button type="button" style='margin-left: 604px; margin-top: 20px;' class="btn btn-success" data-toggle='modal' data-target='.bs-example-modal-lg' id="chore-modal">Choose Chore</button>
+  <button type="button" style='margin-left: 604px; margin-top: 20px;' class="btn btn-info" data-toggle='modal' data-target='.bs-example-modal-lg' id="chore-modal">Choose Chore</button>
   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby='myLargeModalLabel'>
   <div class="modal-dialog modal-lg" style='width:60%;'>
-    <div class="modal-content">
+    <div class="modal-content" id='yo'>
       <% @chores.each do |ch| %>
         <% if ch.order_id == nil %>
         <container style='font-size:35px;'>
@@ -166,22 +166,31 @@
 
 
   <br>
-  <div style='margin-left: 604px; margin-top: 15px; font-size: 30px; font-family: "Times New Roman", Georgia, Serif;'>
-  Choose A Worker:
+  <div style='margin-left: 0; margin-top: 15px; font-size: 30px; font-family: "Times New Roman", Georgia, Serif;'>
+  <button type="button" style='margin-left: 604px; margin-top: 20px;' class="btn btn-success" data-toggle='modal' data-target='.bs-example-modal-lg' id="chore-modal-worker">Choose Worker</button>
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby='myLargeModalLabel'>
+  <div class="modal-dialog modal-lg" style='width:60%;'>
+    <div class="modal-content" id='yo-worker'>
   <br>
   <% @workers.reverse.each do |w| %>
   <% if w.order_id == nil %>
+  <container style='font-size:35px;'>
+
   <%= f.radio_button :worker_id, w.id %>
   <%= f.label :worker_id, w.name%><br>
   <% else %>
     <%= f.radio_button :worker_id, w.id %>
     <%= f.label :worker_id, w.name + ' (Currently Completing Another Chore)'%><br>
   <% end %>
+  </container>
   <% end %>
   <br>
-  <%= f.submit %>
+  <p style='text-align:center;'><%= f.submit 'Place Order!' %></p>
 </div>
 <% end %>
+</div>
+</div>
+</div>
 
 
 
@@ -195,7 +204,15 @@
 
 <script>
   $('#chore-modal').on('click', function(){
+    $('#yo').show()
+    $('#yo-worker').hide()
     $('body').css({color: 'rgb(84, 150, 227)'})
+
+  })
+  $('#chore-modal-worker').on('click', function(){
+    $('#yo').hide()
+    $('#yo-worker').show()
+    $('body').css({color: 'rgba(199, 60, 51, 0.65)'})
 
   })
 </script>
