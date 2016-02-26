@@ -1,23 +1,27 @@
 <% if !logged_in_as_worker? && !logged_in_as_customer? %>
+
 <h1 style='text-align:center;'>Create A New Customer Account</h1>
-<div style='text-align: center'>
+<div>
 <%= form_for @customer do |f| %>
-  <%= f.label :name, 'Enter Your Name' %>
-  <%= f.text_field :name %>
+  <%= f.label :name, 'Enter Your Name', style: 'margin-right: 251px; font-size: 50px;' %>
+  <%= f.text_field :name, style: 'height: 60px; width: 900px; border-radius: 12px;' %>
   <br>
-  <%= f.label :password, "Create a password" %>
-  <%= f.password_field :password %>
+  <%= f.label :password, "Create a password", style: 'margin-right: 207px; font-size: 50px;' %>
+  <%= f.password_field :password, style: 'height: 60px; width: 900px; border-radius: 12px;' %>
   <br>
-  <%= f.label :password_confirmation, 'Confirm Password' %>
-  <%= f.password_field :password_confirmation %>
+  <%= f.label :password_confirmation, 'Confirm Password', style: 'margin-right: 215px; font-size: 50px;' %>
+  <%= f.password_field :password_confirmation, style: 'height: 60px; width: 900px; border-radius: 12px;' %>
   <br>
-  <%= f.label :credit_card_info, 'Enter Credit Card Number' %>
-  <%= f.text_field :credit_card_info %>
+  <%= f.label :credit_card_info, 'Enter Credit Card Number', style: 'margin-right: 35px; font-size: 50px;' %>
+  <%= f.text_field :credit_card_info, style: 'height: 60px; width: 900px; border-radius: 12px;' %>
   <br>
+  <div style='margin-left: 660px; margin-top: 15px; font-size: 30px; font-family: "Times New Roman", Georgia, Serif;'>
   <%= f.submit %>
 <% end %>
-<br>
+<p style='display: inline-block; margin-left: 20px; border: 5px solid rgb(168, 162, 182); border-radius: 25px; padding: 5px;'>
 <%= link_to 'Cancel', customers_path %>
+</p>
+</div>
 </div>
 <% else %>
   <div style='text-align:center;'>Log out to create a customer account.</div>
